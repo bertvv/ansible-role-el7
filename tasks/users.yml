@@ -7,6 +7,7 @@
     name={{ item }}
     state=present
   with_items: el7_user_groups
+  when: el7_user_groups is defined
   tags:
     - el7
     - users
@@ -15,11 +16,13 @@
   user:
     name={{ item.name }}
     state=present
-    comment={{ item.comment }}
-    groups={{ item.groups }}
-    home={{ item.home }}
+    comment="{{ item.comment }}"
+    shell={{ item.shell|default('/bin/bash') }}
+    createhome=yes
+    groups={{ ','.join(item.groups) }}
     password={{ item.password }}
   with_items: el7_users
+  when: el7_users is defined
   tags:
     - el7
     - users
