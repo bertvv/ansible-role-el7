@@ -24,6 +24,14 @@
     - el7
     - install
 
+- name: Ensure Ansible dependencies are installed
+  yum: pkg={{ item }} state=installed
+  with_items:
+    - libselinux-python
+  tags:
+    - el7
+    - install
+
 - name: Ensure specified packages are installed
   yum: pkg={{ item }} state=installed
   with_items: el7_install_packages
