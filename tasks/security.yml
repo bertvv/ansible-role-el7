@@ -2,6 +2,9 @@
 #
 # Basic security settings
 ---
+- name: Make sure SELinux is Enforcing
+  selinux: policy=targeted state=enforcing
+
 - name: Make sure the firewall is running
   service: name=firewalld state=started enabled=yes
   tags:
