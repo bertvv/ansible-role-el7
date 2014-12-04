@@ -1,0 +1,19 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'rbconfig'
+
+VAGRANTFILE_API_VERSION = '2'
+ROLE_NAME = 'el7'
+HOST_NAME = 'test' + ROLE_NAME
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = 'centos70-nocm'
+  # config.vm.synced_folder "roles", "/etc/ansible/roles/" + 'ROLE_NAME'
+  config.vm.define HOST_NAME do |node|
+    node.vm.provision 'ansible' do |ansible|
+      ansible.playbook = 'test.yml'
+    end
+  end
+end
+

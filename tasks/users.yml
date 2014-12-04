@@ -1,0 +1,26 @@
+# roles/el7/tasks/users.yml
+#
+# Create groups and users on the system
+---
+- name: Add groups
+  group:
+    name={{ item }}
+    state=present
+  with_items: el7_user_groups
+  tags:
+    - el7
+    - users
+
+- name: Add users
+  user:
+    name={{ item.name }}
+    state=present
+    comment={{ item.comment }}
+    groups={{ item.groups }}
+    home={{ item.home }}
+    password={{ item.password }}
+  with_items: el7_users
+  tags:
+    - el7
+    - users
+

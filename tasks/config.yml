@@ -1,0 +1,15 @@
+# roles/el7/tasks/config.yml
+---
+
+# This speeds up the Gathering Facts phase and several other situations where
+# a DNS lookup is performed on the host name.
+- name: Ensure host name is in the hosts file
+  lineinfile:
+    dest=/etc/hosts
+    state=present
+    line="{{ ansible_all_ipv4_addresses|last }} {{ ansible_hostname }} {{ ansible_hostname }}.{{ ansible_domain }}"
+    regexp="^{{ ansible_all_ipv4_addresses }}"
+  tags: 
+    - el7
+    - config
+

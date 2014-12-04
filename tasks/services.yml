@@ -1,0 +1,24 @@
+# File: el7/tasks/services.yml
+# Make sure the necessary services are enabled
+
+- name: Ensure SSH daemon is running
+  service: name=sshd enabled=true state=started
+  tags:
+    - el7
+    - services
+
+- name: Ensure specified services are running
+  service: name={{ item }} enabled=false state=stopped
+  with_items: el7_start_services
+  when: el7_start_services is defined
+  tags:
+    - el7
+    - services
+
+- name: Ensure specified services are NOT running
+  service: name={{ item }} enabled=false state=stopped
+  with_items: el7_stop_services
+  when: el7_stop_services is defined
+  tags:
+    - el7
+    - services

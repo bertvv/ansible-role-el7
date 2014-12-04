@@ -1,0 +1,24 @@
+# roles/el7/tasks/security.yml
+#
+# Basic security settings
+---
+- name: Make sure the firewall is running
+  service: name=firewalld state=started enabled=yes
+  tags:
+    - el7
+    - security
+
+- name: Make sure DHCPv6 is still possible
+  firewalld: service=dhcpv6-client permanent=true state=enabled
+  tags:
+    - el7
+    - security
+
+- name: Make sure SSH is still possible
+  firewalld: service=ssh permanent={{ item }} state=enabled
+  with_items:
+    - true
+    - false
+  tags:
+    - el7
+    - security
