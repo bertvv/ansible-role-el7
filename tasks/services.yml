@@ -8,7 +8,7 @@
     - services
 
 - name: Ensure specified services are running
-  service: name={{ item }} enabled=false state=stopped
+  service: name={{ item }} enabled=true state=started
   with_items: el7_start_services
   when: el7_start_services is defined
   tags:
