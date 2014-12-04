@@ -1,6 +1,6 @@
 # Ansible role `el7`
 
-A role for basic setup of an EL7-based machine. This role contains general tasks that are common to all managed machines. Specifically, the responsibilities of this role are to:
+A role for basic setup of an EL7-based machine. This role contains general tasks for basic configuration. Specifically, the responsibilities of this role are to:
 
 * Install external repositories like EPEL (we assume through RPM packages)
 * Install packages not in the default minimal installation,
@@ -11,21 +11,37 @@ A role for basic setup of an EL7-based machine. This role contains general tasks
 
 ## Requirements
 
-
+No specific requirements
 
 ## Role Variables
 
-| Variable               | Required | Default | Choices | Comments                                                                                 |
-| :---                   | :---     | :---    | :---    | :---                                                                                     |
-| `el7_admin_ssh_pubkey` | no       | -       | -       | The public SSH key for the admin user that allows her to log in without a password       |
-| `el7_admin_user`       | no       | -       | -       | The name of the user that will manage this machine.                                      |
-| `el7_install_packages` | no       | -       | -       | Packages that should be installed.                                                       |
-| `el7_remove_packages`  | no       | -       | -       | Packages that should **not** be installed                                                |
-| `el7_repositories`     | no       | -       | -       | External repositories that should be added (e.g. EPEL). Specify the URL to RPM packages. |
-| `el7_start_services`   | no       | -       | -       | Services that should be running and enabled.                                             |
-| `el7_stop_services`    | no       | -       | -       | Services that should **not** be running                                                  |
-| `el7_user_groups`      | no       | -       | -       | User groups that should be present.                                                      |
-| `el7_users`            | no       | -       | -       | Users that should be present.                                                            |
+None of the role variables are required, no default values are set. If the variable is not set, the corresponding setting is not applied.
+
+| Variable               | Required | Type              | Comments                                                                                                    |
+| :---                   | :---     | :---              | :---                                                                                                        |
+| `el7_admin_ssh_pubkey` | no       | scalar            | The public SSH key for the admin user that allows her to log in without a password. The user should exist.  |
+| `el7_admin_user`       | no       | scalar            | The name of the user that will manage this machine.                                                         |
+| `el7_install_packages` | no       | sequence          | Sequence of packages that should be installed.                                                              |
+| `el7_remove_packages`  | no       | sequence          | Sequence of packages that should **not** be installed                                                       |
+| `el7_repositories`     | no       | sequence          | Sequence of URLs to RPM packages to install external repositories (e.g. EPEL)                               |
+| `el7_start_services`   | no       | sequence          | Sequence of services that should be running and enabled.                                                    |
+| `el7_stop_services`    | no       | sequence          | Sequence of services that should **not** be running                                                         |
+| `el7_user_groups`      | no       | sequence          | Sequence of user groups that should be present.                                                             |
+| `el7_users`            | no       | sequence of dicts | Sequence of dicts specifying users that should be present. |
+
+Users are specified by dicts like this:
+
+```Yaml
+el7_users:
+  - name: johndoe
+    comment: 'John Doe'
+    groups:
+      - users
+      - devs
+    password: '$6$WIFkXf07Kn3kALDp$fHbqRKztuufS895easdT [...]'
+```
+
+Optionally, you can specify the `shell`, which defaults to `/bin/bash`.
 
 ## Dependencies
 
@@ -33,7 +49,7 @@ No dependencies.
 
 ## Example Playbook
 
-TODO: Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+See the [test playbook](https://github.com/bertvv/ansible-role-el7/blob/master/tests/test_full.yml)
 
 ## License
 
