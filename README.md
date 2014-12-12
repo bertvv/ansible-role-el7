@@ -51,6 +51,21 @@ No dependencies.
 
 See the [test playbook](https://github.com/bertvv/ansible-role-el7/blob/master/tests/test_full.yml)
 
+## Testing
+
+The `tests` directory contains acceptance tests for this role in the form of two playbooks and a Vagrant environment. The directory `tests/roles/el7` is a symbolic link that should point to the root of this project in order to work. You may want to change the base box into one that you like. The current one is based on Box-Cutter's [CentOS Packer template](https://github.com/box-cutter/centos-vm).
+
+- The playbook [`test.yml`](tests/test.yml) is minimal. It applies the role to a VM, but doesn't set any variables
+- The playbook [`test-full.yml`](tests/test_full.yml) sets all role variables.
+
+For testing the installation of an SSH key, a key pair is provided in `tests/sshkey`. You should be able to log in with:
+
+```
+ssh -i tests/sshkey/admin_key -p 2222 admin@127.0.0.1
+```
+
+Vagrant uses port forwarding on the NAT interface (that is always present in a VM). The first VM under control of Vagrant is assigned port 2222, following ones 2200, 2201, etc. Data sent to this port on your host system is forwarded to port 22 (ssh) on the VM.
+
 ## License
 
 BSD
