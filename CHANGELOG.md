@@ -3,6 +3,12 @@
 This file contains al notable changes to the EL7 Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/).
 
 Versioning follows [Semantic Versioning](http://semver.org/).
+## 1.0.1 - 2014-12-12
+
+# Added
+
+- Change log
+- Testing section in the README
 
 ## 1.0.0 - 2014-12-05
 
