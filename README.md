@@ -58,7 +58,7 @@ The `tests` directory contains acceptance tests for this role in the form of two
 - The playbook [`test.yml`](tests/test.yml) is minimal. It applies the role to a VM, but doesn't set any variables
 - The playbook [`test-full.yml`](tests/test_full.yml) sets all role variables.
 
-For testing the installation of an SSH key, a key pair is provided in `tests/sshkey`. You should be able to log in with:
+For testing the installation of an SSH key, a key pair is provided in `tests/sshkey`. It goes without saying that you should never use this key pair in a production machine! You should be able to log in with:
 
 ```
 ssh -i tests/sshkey/admin_key -p 2222 admin@127.0.0.1
