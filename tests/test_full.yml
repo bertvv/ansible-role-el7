@@ -23,7 +23,7 @@
       - NetworkManager-tui
       - wpa_supplicant
     el7_repositories:
-      - https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-2.noarch.rpm
+      - https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
     el7_start_services:
       - sshd
     el7_stop_services:
