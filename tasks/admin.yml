@@ -26,7 +26,7 @@
 
 - name: Set up SSH key for admin user
   authorized_key:
-    user: {{ el7_admin_user }}
+    user: "{{ el7_admin_user }}"
     key: "{{ el7_admin_ssh_key }}"
   when: el7_admin_user is defined
   tags:

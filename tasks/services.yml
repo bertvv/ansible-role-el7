@@ -12,7 +12,7 @@
 
 - name: Ensure specified services are running
   service:
-    name: {{ item }}
+    name: "{{ item }}"
     enabled: true
     state: started
   with_items: el7_start_services
@@ -23,7 +23,7 @@
 
 - name: Ensure specified services are NOT running
   service:
-    name: {{ item }}
+    name: "{{ item }}"
     enabled: false
     state: stopped
   with_items: el7_stop_services

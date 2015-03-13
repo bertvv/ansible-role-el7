@@ -18,7 +18,7 @@
 
 - name: Ensure specified external repositories are installed
   yum:
-    pkg: {{ item }}
+    pkg: "{{ item }}"
     state: installed
   with_items: el7_repositories
   when: el7_repositories is defined
@@ -28,7 +28,7 @@
 
 - name: Ensure Ansible dependencies are installed
   yum:
-    pkg: {{ item }}
+    pkg: "{{ item }}"
     state: installed
   with_items:
     - libselinux-python
@@ -38,7 +38,7 @@
 
 - name: Ensure specified packages are installed
   yum:
-    pkg: {{ item }}
+    pkg: "{{ item }}"
     state: installed
   with_items: el7_install_packages
   when: el7_install_packages is defined
@@ -48,7 +48,7 @@
 
 - name: Ensure specified packages are NOT installed
   yum:
-    pkg: {{ item }}
+    pkg: "{{ item }}"
     state: absent
   with_items: el7_remove_packages
   when: el7_remove_packages is defined

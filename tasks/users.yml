@@ -4,7 +4,7 @@
 ---
 - name: Add groups
   group:
-    name: {{ item }}
+    name: "{{ item }}"
     state: present
   with_items: el7_user_groups
   when: el7_user_groups is defined
@@ -14,13 +14,13 @@
 
 - name: Add users
   user:
-    name: {{ item.name }}
+    name: "{{ item.name }}"
     state: present
     comment: "{{ item.comment }}"
-    shell: {{ item.shell|default('/bin/bash') }}
+    shell: "{{ item.shell|default('/bin/bash') }}"
     createhome: yes
-    groups: {{ ','.join(item.groups) }}
-    password: {{ item.password }}
+    groups: "{{ ','.join(item.groups) }}"
+    password: "{{ item.password }}"
   with_items: el7_users
   when: el7_users is defined
   tags:
