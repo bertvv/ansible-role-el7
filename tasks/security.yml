@@ -21,4 +21,22 @@
   tags:
     - el7
     - security
+- name: Make sure user specified services can pass through firewall
+  firewalld: service={{ item }} permanent=true state=enabled
+  with_items: el7_firewall_allow_services
+  when: el7_firewall_allow_services is defined
+  notify:
+    - restart firewalld
+  tags:
+    - el7
+    - security
+- name: Make sure basic services can pass through firewall
+  firewalld: port={{ item }} permanent=true state=enabled
+  with_items: el7_firewall_allow_ports
+  when: el7_firewall_allow_ports is defined
+  notify:
+    - restart firewalld
+  tags:
+    - el7
+    - security
 
