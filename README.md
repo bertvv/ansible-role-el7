@@ -9,6 +9,10 @@ A role for basic setup of an EL7-based machine. This role contains general tasks
 * Set up an administrator account with an SSH key,
 * Apply basic security settings, like turning on SELinux and the firewall
 
+## Roadmap
+
+See https://huboard.com/bertvv/ansible-role-el7
+
 ## Requirements
 
 No specific requirements
