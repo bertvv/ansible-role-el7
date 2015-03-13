@@ -3,16 +3,27 @@
 # Basic security settings
 ---
 - name: Make sure SELinux is Enforcing
-  selinux: policy=targeted state=enforcing
+  selinux:
+    policy: targeted
+    state: enforcing
+  tags:
+    - el7
+    - security
 
 - name: Make sure the firewall is running
-  service: name=firewalld state=started enabled=yes
+  service:
+    name: firewalld
+    state: started
+    enabled: yes
   tags:
     - el7
     - security
 
 - name: Make sure basic services can pass through firewall
-  firewalld: service={{ item }} permanent=true state=enabled
+  firewalld:
+    service: {{ item }}
+    permanent: true
+    state: enabled
   with_items:
     - dhcpv6-client
     - ssh
@@ -21,8 +32,12 @@
   tags:
     - el7
     - security
+
 - name: Make sure user specified services can pass through firewall
-  firewalld: service={{ item }} permanent=true state=enabled
+  firewalld:
+    service: {{ item }}
+    permanent: true
+    state: enabled
   with_items: el7_firewall_allow_services
   when: el7_firewall_allow_services is defined
   notify:
@@ -30,8 +45,12 @@
   tags:
     - el7
     - security
+
 - name: Make sure basic services can pass through firewall
-  firewalld: port={{ item }} permanent=true state=enabled
+  firewalld:
+    port: {{ item }}
+    permanent: true
+    state: enabled
   with_items: el7_firewall_allow_ports
   when: el7_firewall_allow_ports is defined
   notify:

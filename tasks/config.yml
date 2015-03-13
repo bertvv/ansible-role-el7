@@ -5,10 +5,10 @@
 # a DNS lookup is performed on the host name.
 - name: Ensure host name is in the hosts file
   lineinfile: >
-    dest=/etc/hosts
-    state=present
-    line="{{ ansible_all_ipv4_addresses|last }} {{ ansible_hostname }} {{ ansible_hostname }}.{{ ansible_domain }}"
-    regexp="^{{ ansible_all_ipv4_addresses }}"
+    dest: /etc/hosts
+    state: present
+    line: "{{ ansible_all_ipv4_addresses|last }} {{ ansible_hostname }} {{ ansible_hostname }}.{{ ansible_domain }}"
+    regexp: "^{{ ansible_all_ipv4_addresses }}"
   tags: 
     - el7
     - config
@@ -17,24 +17,24 @@
 # Workaround for bug https://bugs.centos.org/view.php?id=7526
 - name: Load patched ifup-eth script
   copy: >
-    src=etc_sysconfig_network-scripts_ifup-eth
-    dest=/etc/sysconfig/network-scripts/ifup-eth
-    owner=root
-    group=root
-    mode='0755'
-    setype=bin_t
+    src: etc_sysconfig_network-scripts_ifup-eth
+    dest: /etc/sysconfig/network-scripts/ifup-eth
+    owner: root
+    group: root
+    mode: '0755'
+    setype: bin_t
   tags:
     - el7
     - config
 
 - name: Load patched ifup-post script
   copy: >
-    src=etc_sysconfig_network-scripts_ifup-post
-    dest=/etc/sysconfig/network-scripts/ifup-post
-    owner=root
-    group=root
-    mode='0755'
-    setype=bin_t
+    src: etc_sysconfig_network-scripts_ifup-post
+    dest: /etc/sysconfig/network-scripts/ifup-post
+    owner: root
+    group: root
+    mode: '0755'
+    setype: bin_t
   tags:
     - el7
     - config

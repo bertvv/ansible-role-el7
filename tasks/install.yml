@@ -7,17 +7,19 @@
 
 - name: Custom yum.conf that doesn't keep old kernels
   template:
-    src=etc_yum.conf.j2
-    dest=/etc/yum.conf
-    owner=root
-    group=root
-    mode=0644
+    src: etc_yum.conf.j2
+    dest: /etc/yum.conf
+    owner: root
+    group: root
+    mode: 0644
   tags:
     - el7
     - install
 
 - name: Ensure specified external repositories are installed
-  yum: pkg={{ item }} state=installed
+  yum:
+    pkg: {{ item }}
+    state: installed
   with_items: el7_repositories
   when: el7_repositories is defined
   tags:
@@ -25,7 +27,9 @@
     - install
 
 - name: Ensure Ansible dependencies are installed
-  yum: pkg={{ item }} state=installed
+  yum:
+    pkg: {{ item }}
+    state: installed
   with_items:
     - libselinux-python
   tags:
@@ -33,7 +37,9 @@
     - install
 
 - name: Ensure specified packages are installed
-  yum: pkg={{ item }} state=installed
+  yum:
+    pkg: {{ item }}
+    state: installed
   with_items: el7_install_packages
   when: el7_install_packages is defined
   tags:
@@ -41,7 +47,9 @@
     - install
 
 - name: Ensure specified packages are NOT installed
-  yum: pkg={{ item }} state=absent
+  yum:
+    pkg: {{ item }}
+    state: absent
   with_items: el7_remove_packages
   when: el7_remove_packages is defined
   tags:
