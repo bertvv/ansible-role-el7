@@ -1,0 +1,5 @@
+# ansible/roles/el7/defaults/main.yml
+---
+
+el7_yum_gpgcheck: 0
+el7_yum_keep_kernels: 3

@@ -15,19 +15,22 @@ No specific requirements
 
 ## Role Variables
 
-None of the role variables are required, no default values are set. If the variable is not set, the corresponding setting is not applied.
+None of the role variables are required. If the variable is not set, and no default value is provided, the corresponding setting is not applied.
 
-| Variable               | Required | Type              | Comments                                                                                                    |
-| :---                   | :---     | :---              | :---                                                                                                        |
-| `el7_admin_ssh_pubkey` | no       | scalar            | The public SSH key for the admin user that allows her to log in without a password. The user should exist.  |
-| `el7_admin_user`       | no       | scalar            | The name of the user that will manage this machine.                                                         |
-| `el7_install_packages` | no       | sequence          | Sequence of packages that should be installed.                                                              |
-| `el7_remove_packages`  | no       | sequence          | Sequence of packages that should **not** be installed                                                       |
-| `el7_repositories`     | no       | sequence          | Sequence of URLs to RPM packages to install external repositories (e.g. EPEL)                               |
-| `el7_start_services`   | no       | sequence          | Sequence of services that should be running and enabled.                                                    |
-| `el7_stop_services`    | no       | sequence          | Sequence of services that should **not** be running                                                         |
-| `el7_user_groups`      | no       | sequence          | Sequence of user groups that should be present.                                                             |
-| `el7_users`            | no       | sequence of dicts | Sequence of dicts specifying users that should be present. |
+| Variable               | Default | Comments                                                                                                   |
+| :---                   | :---    | :---                                                                                                       |
+| `el7_admin_ssh_pubkey` | -       | The public SSH key for the admin user that allows her to log in without a password. The user should exist. |
+| `el7_admin_user`       | -       | The name of the user that will manage this machine.                                                        |
+| `el7_install_packages` | -       | Sequence of packages that should be installed.                                                             |
+| `el7_remove_packages`  | -       | Sequence of packages that should **not** be installed                                                      |
+| `el7_repositories`     | -       | Sequence of URLs to RPM packages to install external repositories (e.g. EPEL)                              |
+| `el7_start_services`   | -       | Sequence of services that should be running and enabled.                                                   |
+| `el7_stop_services`    | -       | Sequence of services that should **not** be running                                                        |
+| `el7_user_groups`      | -       | Sequence of user groups that should be present.                                                            |
+| `el7_users`            | -       | Sequence of dicts specifying users that should be present. See below for an example.                       |
+| `el7_yum_gpgcheck`     | 0       | Specifies whether GPG checks should be performed when installing packages (possible values: `0`, or `1`)   |
+| `el7_yum_keep_kernels` | 3       | The number of kernels to be kept after kernel upgrades.                                                    |
+
 
 Users are specified by dicts like this:
 
@@ -53,12 +56,12 @@ See the [test playbook](https://github.com/bertvv/ansible-role-el7/blob/master/t
 
 ## Testing
 
-The `tests` directory contains acceptance tests for this role in the form of two playbooks and a Vagrant environment. The directory `tests/roles/el7` is a symbolic link that should point to the root of this project in order to work. You may want to change the base box into one that you like. The current one is based on Box-Cutter's [CentOS Packer template](https://github.com/box-cutter/centos-vm).
+The `tests` directory contains acceptance tests for this role in the form of two playbooks and a Vagrant environment. The directory `tests/roles/el7` is a symbolic link that should point to the root of this project in order to work. You may want to change the base box into one that you like. The current one is based on Box-Cutter's [CentOS Packer template](https://github.com/boxcutter/centos).
 
 - The playbook [`test.yml`](tests/test.yml) is minimal. It applies the role to a VM, but doesn't set any variables
 - The playbook [`test-full.yml`](tests/test_full.yml) sets all role variables.
 
-For testing the installation of an SSH key, a key pair is provided in `tests/sshkey`. It goes without saying that you should never use this key pair in a production machine! You should be able to log in with:
+For testing the installation of an SSH key, a key pair is provided in `tests/sshkey`. It goes without saying that you should never use this key pair in a production machine! After applying the playbook, you should be able to log in with:
 
 ```
 ssh -i tests/sshkey/admin_key -p 2222 admin@127.0.0.1

@@ -6,8 +6,8 @@
 ---
 
 - name: Custom yum.conf that doesn't keep old kernels
-  copy:
-    src=etc_yum.conf
+  template:
+    src=etc_yum.conf.j2
     dest=/etc/yum.conf
     owner=root
     group=root
