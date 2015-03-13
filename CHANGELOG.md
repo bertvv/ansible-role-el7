@@ -4,16 +4,27 @@ This file contains al notable changes to the EL7 Ansible role. This file adheres
 
 Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.1.0 - 2015-03-13
+
+### Added
+
+- Make yum.conf configurable (GH-4)
+- Make ports/services allowed by firewalld configurable (GH-5)
+
+### Changed
+
+- Abandon Ansible-specific key=value settings in favour of valid YAML structured map (GH-7)
+
 ## 1.0.2 - 2015-01-24
 
-# Added
+### Added
 
 - Patched ifup scripts that don't overrule some firewalld settings after reboot. This is a workaround for CentOS [bug #7526](https://bugs.centos.org/view.php?id=7526).
 
 
 ## 1.0.1 - 2014-12-12
 
-# Added
+### Added
 
 - Change log
 - Testing section in the README
@@ -23,7 +34,7 @@ Versioning follows [Semantic Versioning](http://semver.org/).
 
 First release!
 
-# Added
+### Added
 
 - Install external repos from RPM package(s)
 - Install packages not in the default installation
