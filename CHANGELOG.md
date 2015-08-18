@@ -6,7 +6,7 @@ This file contains al notable changes to the EL7 Ansible role. It adheres to the
 
 ### Added
 
-- Optionally, install a `/etc/motd` file with info about the host name and IP addresses.
+- Optionally, install a `/etc/motd` file with info about the host name and IP addresses. (GH-11)
 
 ### Changed
 
