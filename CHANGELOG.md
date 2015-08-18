@@ -11,6 +11,7 @@ This file contains al notable changes to the EL7 Ansible role. It adheres to the
 ### Changed
 
 - Modified the way the hosts entry in `/etc/hosts` is detected (previous implementation interferes with [bertvv.hosts](https://galaxy.ansible.com/list#/roles/4617))
+- Updated the base box for the Vagrant test environment to CentOS 7.1, and add a download link
 
 ## 1.1.0 - 2015-03-13
 
