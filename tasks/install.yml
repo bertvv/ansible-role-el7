@@ -5,7 +5,7 @@
 # should be specified in group_vars or host_vars.
 ---
 
-- name: Custom yum.conf that doesn't keep old kernels
+- name: Install Custom yum.conf
   template:
     src: etc_yum.conf.j2
     dest: /etc/yum.conf
