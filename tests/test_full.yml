@@ -51,6 +51,7 @@
     el7_yum_gpgcheck: 0
     el7_yum_keep_kernels: 0
     el7_motd: true
+    #el7_hosts_entry: false
   roles:
     - el7
 

@@ -9,6 +9,7 @@
     state: present
     line: "{{ ansible_all_ipv4_addresses|last }} {{ ansible_hostname }} {{ ansible_hostname }}.{{ ansible_domain }}"
     regexp: "{{ ansible_hostname }}"
+  when: el7_hosts_entry
   tags:
     - el7
     - config
