@@ -8,8 +8,20 @@
     dest: /etc/hosts
     state: present
     line: "{{ ansible_all_ipv4_addresses|last }} {{ ansible_hostname }} {{ ansible_hostname }}.{{ ansible_domain }}"
-    regexp: "^{{ ansible_all_ipv4_addresses }}"
-  tags: 
+    regexp: "{{ ansible_hostname }}"
+  tags:
+    - el7
+    - config
+
+- name: Install `/etc/motd` file
+  template:
+    src: etc_motd
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: 0644
+  when: el7_motd == true
+  tags:
     - el7
     - config
 

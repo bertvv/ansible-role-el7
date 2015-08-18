@@ -1,8 +1,16 @@
 # Change log
 
-This file contains al notable changes to the EL7 Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/).
+This file contains al notable changes to the EL7 Ansible role. It adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
-Versioning follows [Semantic Versioning](http://semver.org/).
+## 1.2.0 - 2015-08-18
+
+### Added
+
+- Optionally, install a `/etc/motd` file with info about the host name and IP addresses.
+
+### Changed
+
+- Modified the way the hosts entry in `/etc/hosts` is detected (previous implementation interferes with [bertvv.hosts](https://galaxy.ansible.com/list#/roles/4617))
 
 ## 1.1.0 - 2015-03-13
 

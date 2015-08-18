@@ -28,6 +28,7 @@ None of the role variables are required. If the variable is not set, and no defa
 | `el7_firewall_allow_ports`    | -       | Sequence of ports that should be able to pass through the firewall (e.g. `8080/tcp`).                      |
 | `el7_firewall_allow_services` | -       | Sequence of services that should be able to pass through the firewall (e.g. `http`, `dns`. See below).     |
 | `el7_install_packages`        | -       | Sequence of packages that should be installed.                                                             |
+| `el7_motd`                    | false   | When true, a custom `/etc/motd` is installed with info about the host name and IP addresses.               |
 | `el7_remove_packages`         | -       | Sequence of packages that should **not** be installed                                                      |
 | `el7_repositories`            | -       | Sequence of URLs to RPM packages to install external repositories (e.g. EPEL)                              |
 | `el7_start_services`          | -       | Sequence of services that should be running and enabled.                                                   |
