@@ -2,6 +2,12 @@
 
 This file contains al notable changes to the EL7 Ansible role. It adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.2.2 - 2015-08-16
+
+### Changed
+
+- Bugfix: handle the case when the IPv4 address of a network interface is not defined.
+
 ## 1.2.1 - 2015-08-18
 
 ### Added
