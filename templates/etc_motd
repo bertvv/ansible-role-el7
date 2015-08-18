@@ -1,5 +1,5 @@
 Welcome to {{ ansible_hostname }}.{{ ansible_domain }}.
 {% for iface in ansible_interfaces if not iface == 'lo' %}
-{{ iface.ljust(11) }}: {{ hostvars[inventory_hostname]['ansible_' + iface]['ipv4']['address'].ljust(15) | default(' ' * 15)}} {% if hostvars[inventory_hostname]['ansible_' + iface]['ipv6'] is defined %} {% for ipv6 in hostvars[inventory_hostname]['ansible_' + iface]['ipv6'] %} {{ ipv6.address }}/{{ ipv6.prefix }} {% endfor %} {% endif %}
+{{ iface.ljust(11) }}: {% if hostvars[inventory_hostname]['ansible_' + iface]['ipv4'] is defined %}{{ hostvars[inventory_hostname]['ansible_' + iface]['ipv4']['address'].ljust(15) }} {% else %}               {% endif %}{% if hostvars[inventory_hostname]['ansible_' + iface]['ipv6'] is defined %} {% for ipv6 in hostvars[inventory_hostname]['ansible_' + iface]['ipv6'] %} {{ ipv6.address }}/{{ ipv6.prefix }} {% endfor %} {% endif %}
 
 {% endfor %}
