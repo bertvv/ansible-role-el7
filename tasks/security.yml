@@ -5,7 +5,7 @@
 - name: Make sure SELinux is Enforcing
   selinux:
     policy: targeted
-    state: enforcing
+    state: "{{ el7_selinux_state }}"
   tags:
     - el7
     - security

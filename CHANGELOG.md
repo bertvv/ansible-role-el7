@@ -2,6 +2,12 @@
 
 This file contains al notable changes to the EL7 Ansible role. It adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.3.0 - 2015-08-24
+
+### Added
+
+- Allow the SELinux state to be configured (was always on)
+
 ## 1.2.2 - 2015-08-16
 
 ### Changed
