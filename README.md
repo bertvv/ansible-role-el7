@@ -23,7 +23,7 @@ None of the role variables are required. If the variable is not set, and no defa
 
 | Variable                      | Default   | Comments                                                                                                   |
 | :---                          | :---      | :---                                                                                                       |
-| `el7_admin_ssh_pubkey`        | -         | The public SSH key for the admin user that allows her to log in without a password. The user should exist. |
+| `el7_admin_ssh_key`        | -         | The public SSH key for the admin user that allows her to log in without a password. The user should exist. |
 | `el7_admin_user`              | -         | The name of the user that will manage this machine.                                                        |
 | `el7_firewall_allow_ports`    | -         | Sequence of ports that should be able to pass through the firewall (e.g. `8080/tcp`).                      |
 | `el7_firewall_allow_services` | -         | Sequence of services that should be able to pass through the firewall (e.g. `http`, `dns`. See below).     |
