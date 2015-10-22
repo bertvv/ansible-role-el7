@@ -56,3 +56,11 @@
     - el7
     - install
 
+- name: Ensure all updates are installed
+  yum:
+    pkg: "*"
+    state: installed
+  tags:
+    - el7
+    - install
+
