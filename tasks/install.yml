@@ -26,6 +26,14 @@
     - el7
     - install
 
+- name: Ensure specified external repositories are enabled
+  shell: yum-config-manager --enable {{ item }}
+  with_items: el7_enablerepos
+  when: el7_enablerepos is defined
+  tags:
+    - el7
+    - install
+
 - name: Ensure Ansible dependencies are installed
   yum:
     pkg: "{{ item }}"
