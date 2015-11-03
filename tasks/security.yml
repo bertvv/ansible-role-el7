@@ -46,7 +46,7 @@
     - el7
     - security
 
-- name: Make sure basic services can pass through firewall
+- name: Make sure user specified ports can pass through firewall
   firewalld:
     port: "{{ item }}"
     permanent: true
