@@ -28,8 +28,8 @@
 
 - name: Ensure specified external repositories are enabled
   shell: yum-config-manager --enable {{ item }}
-  with_items: el7_enablerepos
-  when: el7_enablerepos is defined
+  with_items: el7_enable_repos
+  when: el7_enable_repos is defined
   tags:
     - el7
     - install
