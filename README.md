@@ -23,8 +23,9 @@ None of the role variables are required. If the variable is not set, and no defa
 
 | Variable                      | Default   | Comments                                                                                                   |
 | :---                          | :---      | :---                                                                                                       |
-| `el7_admin_ssh_key`        | -         | The public SSH key for the admin user that allows her to log in without a password. The user should exist. |
+| `el7_admin_ssh_key`           | -         | The public SSH key for the admin user that allows her to log in without a password. The user should exist. |
 | `el7_admin_user`              | -         | The name of the user that will manage this machine.                                                        |
+| `el7_exclude_from_update`     | -         | Sequence of packages that have to be excluded from a package update (See `el7_update`). Wildcards allowed. |
 | `el7_firewall_allow_ports`    | -         | Sequence of ports that should be able to pass through the firewall (e.g. `8080/tcp`).                      |
 | `el7_firewall_allow_services` | -         | Sequence of services that should be able to pass through the firewall (e.g. `http`, `dns`. See below).     |
 | `el7_hosts_entry`             | true      | When true, an entry is added to `/etc/hosts` with the machine's host name. This speeds up gathering facts. |
@@ -35,6 +36,7 @@ None of the role variables are required. If the variable is not set, and no defa
 | `el7_selinux_state`           | enforcing | The SELinux state for the system.                                                                          |
 | `el7_start_services`          | -         | Sequence of services that should be running and enabled.                                                   |
 | `el7_stop_services`           | -         | Sequence of services that should **not** be running                                                        |
+| `el7_update`                  | false     | When true, perform a package update. (See also `el7_exclude_from_update`).                                 |
 | `el7_user_groups`             | -         | Sequence of user groups that should be present.                                                            |
 | `el7_users`                   | -         | Sequence of dicts specifying users that should be present. See below for an example.                       |
 | `el7_yum_gpgcheck`            | 0         | Specifies whether GPG checks should be performed when installing packages (possible values: `0`, or `1`)   |
@@ -69,7 +71,7 @@ See the [test playbook](https://github.com/bertvv/ansible-role-el7/blob/master/t
 The `tests` directory contains acceptance tests for this role in the form of two playbooks and a Vagrant environment. The directory `tests/roles/el7` is a symbolic link that should point to the root of this project in order to work. You may want to change the base box into one that you like. The current one is based on Box-Cutter's [CentOS Packer template](https://github.com/boxcutter/centos).
 
 - The playbook [`test.yml`](tests/test.yml) is minimal. It applies the role to a VM, but doesn't set any variables
-- The playbook [`test-full.yml`](tests/test_full.yml) sets all role variables.
+- The playbook [`test_full.yml`](tests/test_full.yml) sets all role variables.
 
 For testing the installation of an SSH key, a key pair is provided in `tests/sshkey`. It goes without saying that you should never use this key pair in a production machine! After applying the playbook, you should be able to log in with:
 
@@ -87,3 +89,6 @@ BSD
 
 Bert Van Vreckem (bert.vanvreckem@hogent.be)
 
+Contributions by:
+
+- Jeroen De Meerleer ([JeroenED](https://github.com/JeroenED))

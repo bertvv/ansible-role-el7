@@ -56,3 +56,11 @@
     - el7
     - install
 
+- name: Perform package updates
+  yum:
+    name: '*'
+    state: latest
+  when: el7_update
+  tags:
+    - el7
+    - install

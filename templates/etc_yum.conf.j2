@@ -7,6 +7,9 @@ exactarch=1
 obsoletes=1
 gpgcheck=0
 plugins=1
+{% if el7_exclude_from_update is defined %}
+exclude={% for item in el7_exclude_from_update %}{{ item }} {%endfor %}
+{% endif %}
 
 # Don't keep old kernels
 installonly_limit=0
