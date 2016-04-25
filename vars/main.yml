@@ -1,4 +1,5 @@
 # roles/el7/vars/main.yml
 ---
 el7_dependencies:
+  - libselinux-python
   - yum-utils

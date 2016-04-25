@@ -26,7 +26,7 @@
     - el7
     - install
 
-- name: Install dependencies
+- name: Install role/Ansible dependencies
   yum:
     pkg: "{{ item }}"
     state: installed
@@ -43,21 +43,11 @@
     - el7
     - install
 
-- name: Ensure Ansible dependencies are installed
-  yum:
-    pkg: "{{ item }}"
-    state: installed
-  with_items:
-    - libselinux-python
-  tags:
-    - el7
-    - install
-
 - name: Ensure specified packages are installed
   yum:
     pkg: "{{ item }}"
     state: installed
-  with_items: el7_install_packages
+  with_items: "{{ el7_install_packages }}"
   when: el7_install_packages is defined
   tags:
     - el7
@@ -67,7 +57,7 @@
   yum:
     pkg: "{{ item }}"
     state: absent
-  with_items: el7_remove_packages
+  with_items: "{{ el7_remove_packages }}"
   when: el7_remove_packages is defined
   tags:
     - el7
