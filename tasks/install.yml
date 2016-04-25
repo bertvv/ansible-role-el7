@@ -20,15 +20,24 @@
   yum:
     pkg: "{{ item }}"
     state: installed
-  with_items: el7_repositories
+  with_items: "{{ el7_repositories }}"
   when: el7_repositories is defined
+  tags:
+    - el7
+    - install
+
+- name: Install dependencies
+  yum:
+    pkg: "{{ item }}"
+    state: installed
+  with_items: "{{ el7_dependencies }}"
   tags:
     - el7
     - install
 
 - name: Ensure specified external repositories are enabled
   shell: yum-config-manager --enable {{ item }}
-  with_items: el7_enable_repos
+  with_items: "{{ el7_enable_repos }}"
   when: el7_enable_repos is defined
   tags:
     - el7
