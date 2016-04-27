@@ -2,6 +2,15 @@
 
 This file contains al notable changes to the EL7 Ansible role. It adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.4.1 - 2016-04-27
+
+### Changed
+
+- Enabling repos is now idempotent
+- Fix Ansible 2.0 deprecation warnings
+- Improved task names (include category name, e.g. Install, Security, etc.)
+- Fix missing dependency
+
 ## 1.4.0 - 2015-11-03
 
 ### Added
