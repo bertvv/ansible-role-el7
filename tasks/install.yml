@@ -5,7 +5,7 @@
 # should be specified in group_vars or host_vars.
 ---
 
-- name: Install Custom yum.conf
+- name: Install | Custom yum.conf
   template:
     src: etc_yum.conf.j2
     dest: /etc/yum.conf
@@ -16,7 +16,7 @@
     - el7
     - install
 
-- name: Ensure specified external repositories are installed
+- name: Install | Ensure specified external repositories are installed
   yum:
     pkg: "{{ item }}"
     state: installed
@@ -26,7 +26,7 @@
     - el7
     - install
 
-- name: Install role/Ansible dependencies
+- name: Install | Role/Ansible dependencies
   yum:
     pkg: "{{ item }}"
     state: installed
@@ -35,7 +35,7 @@
     - el7
     - install
 
-- name: Ensure specified external repositories are enabled
+- name: Install | Ensure specified external repositories are enabled
   shell: yum-config-manager --enable {{ item }}
   with_items: "{{ el7_enable_repos }}"
   when: el7_enable_repos is defined
@@ -43,7 +43,7 @@
     - el7
     - install
 
-- name: Ensure specified packages are installed
+- name: Install | Ensure specified packages are installed
   yum:
     pkg: "{{ item }}"
     state: installed
@@ -53,7 +53,7 @@
     - el7
     - install
 
-- name: Ensure specified packages are NOT installed
+- name: Install | Ensure specified packages are NOT installed
   yum:
     pkg: "{{ item }}"
     state: absent
@@ -63,7 +63,7 @@
     - el7
     - install
 
-- name: Ensure all updates are installed
+- name: Install | Ensure all updates are installed
   yum:
     name: '*'
     state: latest

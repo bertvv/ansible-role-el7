@@ -3,7 +3,7 @@
 
 # This speeds up the Gathering Facts phase and several other situations where
 # a DNS lookup is performed on the host name.
-- name: Ensure host name is in the hosts file
+- name: Config | Ensure host name is in the hosts file
   lineinfile:
     dest: /etc/hosts
     state: present
@@ -14,7 +14,7 @@
     - el7
     - config
 
-- name: Install `/etc/motd` file
+- name: Config | Install `/etc/motd` file
   template:
     src: etc_motd
     dest: /etc/motd
@@ -28,7 +28,7 @@
 
 # Patched ifup scripts that don't overrule firewall settings
 # Workaround for bug https://bugs.centos.org/view.php?id=7526
-- name: Load patched ifup-eth script
+- name: Config | Load patched ifup-eth script
   copy:
     src: etc_sysconfig_network-scripts_ifup-eth
     dest: /etc/sysconfig/network-scripts/ifup-eth
@@ -40,7 +40,7 @@
     - el7
     - config
 
-- name: Load patched ifup-post script
+- name: Config | Load patched ifup-post script
   copy:
     src: etc_sysconfig_network-scripts_ifup-post
     dest: /etc/sysconfig/network-scripts/ifup-post

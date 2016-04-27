@@ -2,7 +2,7 @@
 #
 # Basic security settings
 ---
-- name: Make sure SELinux is Enforcing
+- name: Security | Make sure SELinux is Enforcing
   selinux:
     policy: targeted
     state: "{{ el7_selinux_state }}"
@@ -10,7 +10,7 @@
     - el7
     - security
 
-- name: Make sure the firewall is running
+- name: Security | Make sure the firewall is running
   service:
     name: firewalld
     state: started
@@ -19,7 +19,7 @@
     - el7
     - security
 
-- name: Make sure basic services can pass through firewall
+- name: Security | Make sure basic services can pass through firewall
   firewalld:
     service: "{{ item }}"
     permanent: true
@@ -33,7 +33,7 @@
     - el7
     - security
 
-- name: Make sure user specified services can pass through firewall
+- name: Security | Make sure user specified services can pass through firewall
   firewalld:
     service: "{{ item }}"
     permanent: true
@@ -46,7 +46,7 @@
     - el7
     - security
 
-- name: Make sure user specified ports can pass through firewall
+- name: Security | Make sure user specified ports can pass through firewall
   firewalld:
     port: "{{ item }}"
     permanent: true
