@@ -35,8 +35,12 @@
     - el7
     - install
 
-- name: Install | Ensure specified external repositories are enabled
-  shell: yum-config-manager --enable {{ item }}
+- name: Install | Ensure specified repositories are enabled
+  lineinfile:
+    dest: "/etc/yum.repos.d/{{ item }}.repo"
+    line: 'enabled=1'
+    state: present
+    regexp: '^enabled='
   with_items: "{{ el7_enable_repos }}"
   when: el7_enable_repos is defined
   tags:

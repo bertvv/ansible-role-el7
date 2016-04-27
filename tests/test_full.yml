@@ -57,7 +57,7 @@
       - centos-release*
     el7_update: true
     el7_enable_repos:
-      - fasttrack
+      - CentOS-fasttrack
   roles:
     - el7
 
