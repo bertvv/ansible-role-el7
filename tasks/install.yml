@@ -36,13 +36,12 @@
     - install
 
 - name: Install | Ensure specified repositories are enabled
-  lineinfile:
-    dest: "/etc/yum.repos.d/{{ item }}.repo"
-    line: 'enabled=1'
-    state: present
-    regexp: '^enabled='
-  with_items: "{{ el7_enable_repos }}"
-  when: el7_enable_repos is defined
+  ini_file:
+    dest: "/etc/yum.repos.d/{{ item.name }}.repo"
+    section: "{{ item.section|default(item.name) }}"
+    option: enabled
+    value: 1
+  with_items: "{{ el7_enable_repositories }}"
   tags:
     - el7
     - install
