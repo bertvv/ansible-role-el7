@@ -2,6 +2,12 @@
 
 This file contains al notable changes to the EL7 Ansible role. It adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 2.0.0 - 2016-05-10
+
+### Changed
+
+- (GH-15) The variable for enabling repositories (`el7_enable_repositories`) was changed so it also works for .repo files with several sections. This change breaks existing playbooks, hence the major version bump.
+
 ## 1.4.1 - 2016-04-27
 
 ### Changed
@@ -15,7 +21,7 @@ This file contains al notable changes to the EL7 Ansible role. It adheres to the
 
 ### Added
 
-- Optionally update all packages (GH-8). Credit [@JeroenED](https://github.com/JeroenED)
+- (GH-8) Optionally update all packages. Credit [@JeroenED](https://github.com/JeroenED)
 - Allow packages to be excluded from an update
 
 ## 1.3.0 - 2015-08-24
@@ -40,7 +46,7 @@ This file contains al notable changes to the EL7 Ansible role. It adheres to the
 
 ### Added
 
-- Optionally, install a `/etc/motd` file with info about the host name and IP addresses. (GH-11)
+- (GH-11) Optionally, install a `/etc/motd` file with info about the host name and IP addresses.
 
 ### Changed
 
@@ -51,12 +57,12 @@ This file contains al notable changes to the EL7 Ansible role. It adheres to the
 
 ### Added
 
-- Make yum.conf configurable (GH-4)
-- Make ports/services allowed by firewalld configurable (GH-5)
+- (GH-4) Make yum.conf configurable
+- (GH-5) Make ports/services allowed by firewalld configurable
 
 ### Changed
 
-- Abandon Ansible-specific key=value settings in favour of valid YAML structured map (GH-7)
+- (GH-7) Abandon Ansible-specific key=value settings in favour of valid YAML structured map
 
 ## 1.0.2 - 2015-01-24
 
